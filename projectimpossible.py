@@ -79,6 +79,7 @@ def Signup():
         else:
             print("Password is weak")
             print("Please Enter A Valid Password")
+    print("You have uccessfully signed up.")
 
 def who_is_online(friends):
     online=[]
@@ -119,55 +120,57 @@ def choices_of_logged_in():
     print("Press 1 for Chats")
     print("Press 2 for Friends")
     print("Press 3 for Searching a Friend")
+    #print("Press 4 for Profile")
+    
 
 def Search_friend():
     friend=input()
     for i in members_name:
-        if(Matcher(i,friend,40999999, 999999937)!=''):
+        if(Matcher(i,friend,101)!=''):
             print(i)
     
 def logged_in(detail):
     choices_of_logged_in()
     choice=int(input())
     member_friends=members_name[members_username.index(detail[0])]
-    switcher={
-        1:Chats(member_friends),
-        2:Friends(),
-        3:Search_friend()
-        }
+    if(choice==1):
+        Chats(member_friends)
+    elif(choice==2):
+        Friends(detail)
+    elif(choice==3):
+        Search_friend()
     # to be completed
 
 def choices():
     print("Press 1 for Signup")
     print("Press 2 for Login")
 
-
-def Matcher(text, pattern, d, q):
-    n = len(text)
-    m = len(pattern)
-    h = pow(d,m-1)%q
-    p = 0
-    t = 0
-    result = []
-    for i in range(m): # preprocessing
-        p = (d*p+ord(pattern[i]))%q
-        t = (d*t+ord(text[i]))%q
-    for s in range(n-m+1): # note the +1
-        if p == t: # check character by character
-            match = True
-            for i in range(m):
-                if pattern[i] != text[s+i]:
-                    match = False
-                    break
-            if match:
-                result = result + [s]
-        if s < n-m:
-            t = (t-h*ord(text[s]))%q # remove letter s
-            t = (t*d+ord(text[s+m]))%q # add letter s+m
-            t = (t+q)%q # make sure that t >= 0
-    return result
-
-
+d = 256
+def Matcher(pat, txt, q):               # string matching using rabin-karp algorithm
+	M = len(pat) 
+	N = len(txt) 
+	i = 0
+	j = 0
+	p = 0
+	t = 0 
+	h = 1
+	for i in range(M-1): 
+		h = (h * d)% q 
+	for i in range(M): 
+		p = (d * p + ord(pat[i]))% q 
+		t = (d * t + ord(txt[i]))% q
+	for i in range(N-M + 1):  
+		if p == t:  
+			for j in range(M): 
+				if txt[i + j] != pat[j]: 
+					break
+			j+= 1 
+			if j == M: 
+				print("Pattern found at index " + str(i) )
+		if i < N-M: 
+			t = (d*(t-ord(txt[i])*h) + ord(txt[i + M]))% q
+			if t < 0: 
+				t = t + q 
 
 choices()
 choice=int(input())
@@ -182,5 +185,3 @@ print(if_login)
 print(detail)
 if(if_login==1):
     logged_in(detail)
-
-"""check to be logged  in"""
