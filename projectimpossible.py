@@ -85,7 +85,8 @@ def who_is_online(friends):
     online=[]
     while(1):
         print('\n'*100)
-        for i in range(len(friends)-2):
+        no_of_friends_online=random.randint(1,len(friends)-2)
+        for i in range(no_of_friends_online):
             friend=random.choice(friends)
             if friend not in online:
                 online.append(friend)
@@ -120,8 +121,6 @@ def choices_of_logged_in():
     print("Press 1 for Chats")
     print("Press 2 for Friends")
     print("Press 3 for Searching a Friend")
-    #print("Press 4 for Profile")
-    
 
 def Search_friend():
     friend=input()
@@ -136,7 +135,7 @@ def logged_in(detail):
     if(choice==1):
         Chats(member_friends)
     elif(choice==2):
-        Friends(detail)
+        Friends()
     elif(choice==3):
         Search_friend()
     # to be completed
@@ -144,6 +143,7 @@ def logged_in(detail):
 def choices():
     print("Press 1 for Signup")
     print("Press 2 for Login")
+
 
 d = 256
 def Matcher(pat, txt, q):               # string matching using rabin-karp algorithm
@@ -171,6 +171,8 @@ def Matcher(pat, txt, q):               # string matching using rabin-karp algor
 			t = (d*(t-ord(txt[i])*h) + ord(txt[i + M]))% q
 			if t < 0: 
 				t = t + q 
+
+
 
 choices()
 choice=int(input())
