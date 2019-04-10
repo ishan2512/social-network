@@ -148,7 +148,7 @@ def choices():
 d = 256
 def Matcher(pat, txt, q):               # string matching using rabin-karp algorithm
 	M = len(pat) 
-	N = len(txt) 
+	N = len(txt) 			# Rabin-karp is implemented according dynamic Programming
 	i = 0
 	j = 0
 	p = 0
