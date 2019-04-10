@@ -81,6 +81,8 @@ def Signup():
             print("Please Enter A Valid Password")
     print("You have uccessfully signed up.")
 
+
+# who_is_online is not working dynamically but randomly
 def who_is_online(friends):
     online=[]
     while(1):
