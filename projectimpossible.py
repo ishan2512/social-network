@@ -2,9 +2,9 @@ import random
 from os import system, name
 from time import sleep
 
-members_name=['Chirag','Anubhav','Rachit','Divyanshu','Subrat','Ishaan','Rishi']
-members_username=['chirag','anubhav','rachit','divyanshu','subrat','ishaan','rishi']
-members_password=['Chir123@','Anub123@','Rach123@','Divy123@','Subr123@','Isha123@','Rish123@']              #data to be entered
+members_name=['Chirag','Anubhav','Rachit','Divyanshu','Ishaan','Rishi']
+members_username=['chirag','anubhav','rachit','divyanshu','ishaan','rishi']
+members_password=['Chir123@','Anub123@','Rach123@','Divy123@','Isha123@','Rish123@']              #data to be entered
 
 def members(friend):
     friends_circle={'Chirag':['Anubhav','Rachit','Divyanshu','Subrat','Ishaan','Rishi'],
